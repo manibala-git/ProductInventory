@@ -148,3 +148,4 @@ C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.api\bin\Debug\net9.0\r
 C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.api\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.api\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.api\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.Api\obj\Debug\net9.0\ProductInventory.Api.sourcelink.json

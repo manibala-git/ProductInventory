@@ -108,3 +108,4 @@ C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.Tests\obj\Debug\net9.0
 C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.Tests\obj\Debug\net9.0\ProductInventory.Tests.pdb
 C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.Tests\obj\Debug\net9.0\ProductInventory.Tests.genruntimeconfig.cache
 C:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.Tests\obj\Debug\net9.0\ref\ProductInventory.Tests.dll
+c:\Users\u499232\Desktop\Csharp\Solution\ProductInventory.Tests\obj\Debug\net9.0\ProductInventory.Tests.sourcelink.json

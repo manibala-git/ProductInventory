@@ -1,5 +1,7 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using ProductInventory.Api.Data;
+using ProductInventory.Api.Models.Mapping;
 using ProductInventory.Api.Repositories;
 using ProductInventory.Api.Service;
 
@@ -13,6 +15,12 @@ options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<IProductService, ProductServices>();
 builder.Services.AddScoped<IProductRepository, ProductRepositories>();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+// builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 builder.Services.AddControllers();
 var app = builder.Build();
