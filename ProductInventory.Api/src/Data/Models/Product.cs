@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices.JavaScript;
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using ProductInventory.Api.Data;
 
 namespace ProductInventory.Api.Models;
 

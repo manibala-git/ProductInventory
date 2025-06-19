@@ -18,7 +18,7 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Products>()
-            .Property(c => c.Categories)
+            .Property(c => c.Categories)      
             .HasConversion(
                 new ValueConverter<List<Category>, string>(
                     value => JsonSerializer.Serialize(value, (JsonSerializerOptions?)null),

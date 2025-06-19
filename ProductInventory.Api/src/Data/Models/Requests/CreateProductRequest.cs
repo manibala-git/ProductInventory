@@ -1,5 +1,7 @@
+using ProductInventory.Api.Data;
+
 namespace ProductInventory.Api.Models.Requests;
-using ProductInventory.Api.Data.
+
 
 public class CreateProductRequest
 {

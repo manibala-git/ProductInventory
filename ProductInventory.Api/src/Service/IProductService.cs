@@ -3,6 +3,7 @@ namespace ProductInventory.Api.Service;
 using ProductInventory.Api.Data.DTOs;
 using ProductInventory.Api.Models;
 using ProductInventory.Api.Models.Requests;
+using ProductInventory.Api.Request;
 
 public interface IProductService
 {
@@ -17,7 +18,7 @@ public interface IProductService
     Task<ProductDto> GetById(Guid id);
 
 
-    // Task<ProductDto> UpdateProduct(Guid id, UpdateProductRequest request);
+     Task<ProductDto> UpdateProduct(Guid id, UpdateProductRequest request);
     Task<bool> DeleteProductAsync(Guid id);
    
 }

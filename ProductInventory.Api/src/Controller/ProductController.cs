@@ -5,6 +5,7 @@ using ProductInventory.Api.Data.DTOs;
 using ProductInventory.Api.Data.Response;
 using ProductInventory.Api.Models;
 using ProductInventory.Api.Models.Requests;
+using ProductInventory.Api.Request;
 using ProductInventory.Api.Service;
 
 [ApiController]
@@ -23,11 +24,11 @@ public class ProductController : ControllerBase
     {
         _productService = productService;
     }
-     // Adding a Product
+    // Adding a Product
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] CreateProductRequest request)
     {
-        var result = await _productService.AddProduct(request);
+        var result = await _productService.CreateProduct(request);
         if (result == null)
         {
             return BadRequest(new ApiResponse<ProductDto>(false, "Product Creation Failed", null));
@@ -54,45 +55,67 @@ public class ProductController : ControllerBase
         }
         return Ok(new ApiResponse<ProductDto>(true, "Product Fetched Successfully", result));
     }
+      [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] UpdateProductRequest request)
+    {
+        var result = await _productService.UpdateProduct(id, request);
+        if (result == null)
+        {
+            return NotFound(new ApiResponse<ProductDto>(false, "Product Not Found", null));
+        }
+        return Ok(new ApiResponse<ProductDto>(true, "Product Updated Successfully", result));
+    }
+
+    // Delete a Product
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProduct(Guid id)
+    {
+        var result = await _productService.DeleteProductAsync(id);
+        if (!result)
+        {
+            return NotFound(new ApiResponse<bool>(false, "Product Not Found", false));
+        }
+        return Ok(new ApiResponse<bool>(true, "Product Deleted Successfully", true));
+    }
 
 /* 
-    [HttpPost]
-    public ActionResult CreateProduct([FromBody] Products products)
-    {
-        Products newProduct = _productService.AddProduct(products);
-        return Ok(newProduct);
-    }
+        [HttpPost]
+        public ActionResult CreateProduct([FromBody] Products products)
+        {
+            Products newProduct = _productService.AddProduct(products);
+            return Ok(newProduct);
+        }
 
-    [HttpGet("{id}")]
+        [HttpGet("{id}")]
 
-    public ActionResult GetProduct(string id)
-    {
+        public ActionResult GetProduct(string id)
+        {
 
-        var product = _productService.GetProduct(id);
+            var product = _productService.GetProduct(id);
 
-        return Ok(product);
+            return Ok(product);
 
-    }
-    [HttpGet]
-    public ActionResult GetAllProducts()
-    {
-        var products = _productService.GetAllProducts();
-        return Ok(products);
-    }
- */
-    [HttpPut("{id}")]
-    public ActionResult UpdateProduct([FromBody] Products products, string id)
-    {
-        Products updateProd = _productService.(id, products);
-        return Ok(updateProd);
-    }
+        }
+        [HttpGet]
+        public ActionResult GetAllProducts()
+        {
+            var products = _productService.GetAllProducts();
+            return Ok(products);
+        }
+    //  */
+    //     [HttpPut("{id}")]
+    //     public ActionResult UpdateProduct([FromBody] Products products, string id)
+    //     {
+    //         Products updateProd = _productService.(id, products);
+    //         return Ok(updateProd);
+    //     }
 
-    [HttpDelete("{id}")]
-    public ActionResult DeleteProduct(string id)
-    {
-        _productService.DeleteProduct(id);
-        return Ok("Deleted");
-    }
-    
+    // [HttpDelete("{id}")]
+    // public ActionResult DeleteProduct(string id)
+    // {
+    //     _productService.(id);
+    //     return Ok("Deleted");
+    // }
+
 
 }
