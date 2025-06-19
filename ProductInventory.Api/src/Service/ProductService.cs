@@ -41,6 +41,34 @@ public class ProductServices : IProductService
         return productDto;
     }
 
+    public async Task<ProductDto> UpdateProduct(Guid id, UpdateProductRequest request)
+    {
+        var product = await _productRepository.GetByIdAsync(id);
+        if (product == null)
+        {
+            return null;
+        }
+
+        _mapper.Map(request, product);
+        await _productRepository.UpdateAsync(product);
+
+        var productDto = _mapper.Map<ProductDto>(product);
+        return productDto;
+    }
+
+    public async Task<bool> DeleteProductAsync(Guid id)
+    {
+        var product = _productRepository.GetByIdAsync(id);
+        if(product is null)
+        {
+            return false;
+        }
+        await _productRepository.DeleteAsync(id);
+        return true;
+
+    }
+    
+}
     // public Products AddProduct(Products products)
     // {
     //     return _productRepository.Save(products);
@@ -77,32 +105,4 @@ public class ProductServices : IProductService
     //     Products updateProduct = _productRepository.UpdateProduct(dbProduct);
     //     return updateProduct;
     // }
-    public async Task<ProductDto> UpdateProduct(Guid id, UpdateProductRequest request)
-    {
-        var product = await _productRepository.GetByIdAsync(id);
-        if (product == null)
-        {
-            return null;
-        }
-
-        _mapper.Map(request, product);
-        await _productRepository.UpdateAsync(product);
-
-        var productDto = _mapper.Map<ProductDto>(product);
-        return productDto;
-    }
-
-    public async Task<bool> DeleteProductAsync(Guid id)
-    {
-        var product = _productRepository.GetByIdAsync(id);
-        if(product is null)
-        {
-            return false;
-        }
-        await _productRepository.DeleteAsync(id);
-        return true;
-
-    }
-    
-}
 

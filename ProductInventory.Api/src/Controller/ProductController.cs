@@ -11,11 +11,6 @@ using ProductInventory.Api.Service;
 [ApiController]
 [Route("api/[controller]")]
 
-
-
-
-
-
 public class ProductController : ControllerBase
 {
     private IProductService _productService;
